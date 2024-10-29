@@ -1,11 +1,12 @@
 var express = require('express');
 var app = express();
+app.locals.pretty = true;
 app.set('view engine', 'jade');
 app.set('views', './views');
 app.use(express.static('public'));
 
 app.get('/template', function(req, res) {
-    res.render('temp'); 
+    res.render('temp', {time:Date(), title:'Jade'}); 
     /* 
         /template 경로를 통해서 들어온 사용자에게 
         function이 실행이 되면서 temp 템플릿 파일을
