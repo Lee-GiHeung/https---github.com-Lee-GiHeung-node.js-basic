@@ -1,8 +1,9 @@
 var express = require('express');
 var app = express();
 app.set('view engine', 'jade');
-app.set('view', './views');
+app.set('views', './views');
 app.use(express.static('public'));
+
 app.get('/template', function(req, res) {
     res.render('temp'); 
     /* 
@@ -11,6 +12,7 @@ app.get('/template', function(req, res) {
         웹 페이지로 렌더링해서 전송
     */
 });
+
 app.get('/', function(req, res){
     res.send('<h2>Hello home page</h2>');
 });
