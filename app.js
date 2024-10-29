@@ -1,7 +1,16 @@
 var express = require('express');
 var app = express();
+app.set('view engine', 'jade');
+app.set('view', './views');
 app.use(express.static('public'));
-
+app.get('/template', function(req, res) {
+    res.render('temp'); 
+    /* 
+        /template 경로를 통해서 들어온 사용자에게 
+        function이 실행이 되면서 temp 템플릿 파일을
+        웹 페이지로 렌더링해서 전송
+    */
+});
 app.get('/', function(req, res){
     res.send('<h2>Hello home page</h2>');
 });
@@ -25,7 +34,7 @@ app.get('/dynamic', function(req, res) {
             </ul> 
             ${time}
         </body>
-    </html>`;
+    </html>`; 
     res.send(output);
 });
 app.get('/route', function(req, res) {
